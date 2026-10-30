@@ -3,8 +3,9 @@ import type { PacoteType } from "./types"
 
 type PacoteProps = {
     pacote: PacoteType;
+    acaoExcluir: (id: string)=>void;
 }
-export default function Pacote({pacote}: PacoteProps) {
+export default function Pacote({pacote, acaoExcluir}: PacoteProps) {
     return (
         <div className="pacote">
             <dt>id</dt>
@@ -17,5 +18,10 @@ export default function Pacote({pacote}: PacoteProps) {
             <dd>{pacote.profundidade}</dd>
             <dt>Peso (kg)</dt>
             <dd>{pacote.peso}</dd>
+            <dt>Cubagem (cm³)</dt>
+            <dd> {400*pacote.altura/100*pacote.largura/100*pacote.profundidade/100} </dd>
+            <dd>
+                <button onClick={() => acaoExcluir(pacote.id)}>Excluir</button>
+            </dd>
         </div>)
 }

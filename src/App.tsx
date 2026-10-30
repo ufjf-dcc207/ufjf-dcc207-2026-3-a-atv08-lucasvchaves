@@ -23,11 +23,17 @@ const data: Array<PacoteType> = [
 function App() {
   const [pacotes, setPacotes] = useState(data);
 
+  function excluirPacote(id: string) {
+    const novoPacotes = pacotes.filter(p => p.id !== id);
+    setPacotes(novoPacotes);
+  }
+
   return (
     <section>
       <h2>Pacotes</h2>
       <div className='pacotes'>
-        {pacotes.map(p => <Pacote pacote={p} key={p.id}/>)}      </div>
+        {pacotes.map(p => <Pacote pacote={p} key={p.id} acaoExcluir={excluirPacote}></Pacote>)}
+      </div>
     </section>
   )
 }
