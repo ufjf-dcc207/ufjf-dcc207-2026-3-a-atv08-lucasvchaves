@@ -2,11 +2,11 @@ import { useState } from "react";
 import "./ListaPacotes.css"
 import Pacote from "./Pacote";
 import type { PacoteType } from "./types";
-import type { AcaoPacoteExcluir } from "./PacoteReducer";
+import type { AcaoPacote } from "./PacoteReducer";
 
 type ListaPacotesProps = {
     pacotes: Array<PacoteType>;
-    dispatcher: React.ActionDispatch<[action: AcaoPacoteExcluir]>;
+    dispatcher: React.ActionDispatch<[action: AcaoPacote]>;
 }
 
 export default function ListaPacotes({pacotes, dispatcher}: ListaPacotesProps) {
