@@ -11,7 +11,13 @@ export type AcaoPacoteRepetir = {
     id: string
 }
 
-export type AcaoPacote = AcaoPacoteExcluir | AcaoPacoteRepetir;
+export type AcaoPacoteMudarPeso = {
+    type: 'mudarPeso',
+    acao: "aumentar" | "reduzir",
+    id: string
+}
+
+export type AcaoPacote = AcaoPacoteExcluir | AcaoPacoteRepetir | AcaoPacoteMudarPeso;
 
 export default function pacoteReducer(state: Array<PacoteType>, action: AcaoPacote) : Array<PacoteType>{
     switch (action.type) {
@@ -25,6 +31,19 @@ export default function pacoteReducer(state: Array<PacoteType>, action: AcaoPaco
                     } else return p;
                 });
             }
+        break;
+        case "mudarPeso":
+            return state.map(p => {
+                    if (p.id === action.id) {
+                        if (action.acao === "aumentar") {
+                            return {...p, peso: p.peso + 1};
+                        }
+
+                        if (action.acao === "reduzir") {
+                            return {...p, peso: p.peso - 1};
+                        }
+                    } else return p;
+                });
         break;
 
         default:

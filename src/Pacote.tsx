@@ -24,6 +24,8 @@ export default function Pacote({pacote, dispatcher}: PacoteProps) {
             <dd>
                 <button onClick={() => dispatcher({type: "excluir", id: pacote.id})}>Excluir</button>
                 <button onClick={() => dispatcher({type: "repetir", dimensao: "altura", id: pacote.id})}>Repetir Altura</button>
+                <button onClick={() => dispatcher({type: "mudarPeso", id: pacote.id, acao: "aumentar"})}>+ Peso</button>
+                <button onClick={() => dispatcher({type: "mudarPeso", id: pacote.id, acao: "reduzir"})}>- Peso</button>
             </dd>
         </div>)
 }
